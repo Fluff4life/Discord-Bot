@@ -5,11 +5,9 @@ module.exports = {
   once: true,
   async execute(bot) {
 
-    bot.user.setStatus('idle').then(stat => {
-      bot.user.setStatus('dnd')
-    })
+    bot.user.setStatus('idle')
     console.log(`Online | ${bot.user.tag} is now online in ${(bot.guilds.cache.size)} guild(s)!`);
-
+    bot.user.setStatus('dnd')
     let num = 0
     const activities = [
       { name: 'For /help', type: 'WATCHING' },
