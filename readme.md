@@ -11,7 +11,7 @@ Darling is a open source Discord bot coded in JavaScript with [Discord.js](https
 Feel free to add a star ⭐ to the repository to promote the project!
 
 ## Features
-
+t
 ### Complete Bot
 
 Darling offers (non-exhaustive list):
