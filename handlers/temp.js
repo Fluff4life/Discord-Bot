@@ -17,14 +17,13 @@ module.exports = (bot) => {
         const guild = await bot.guilds.fetch(result.GuildID);
         try {
           const member = await guild.members.fetch(result.UserID);
+          const role = await roleSchema.findOne({ GuildID: guild.id });
+          member.roles.remove(role.RoleID);
         } catch (error) {
           await muteSchema.updateMany(conditional, {
             Current: false,
           });
         }
-
-        const role = await roleSchema.findOne({ GuildID: guild.id });
-        member.roles.remove(role.RoleID);
       }
       await muteSchema.updateMany(conditional, {
         Current: false,
@@ -45,7 +44,6 @@ module.exports = (bot) => {
             Current: false,
           });
         }
-        guild.members.unban(result.UserID);
       }
       await banSchema.updateMany(conditional, {
         Current: false,
