@@ -3,13 +3,11 @@ const muteSchema = require('../schemas/mute-schema');
 const roleSchema = require('../schemas/role-schema');
 
 module.exports = (bot) => {
-  const conditional = {
-    Expires: { $lt: new Date() },
-    Current: true,
-  }
-
-
   async function mutes() {
+    const conditional = {
+      Expires: { $lt: new Date() },
+      Current: true,
+    }
     const results = await muteSchema.find(conditional);
 
     if (results && results.length) {
@@ -32,6 +30,10 @@ module.exports = (bot) => {
     setTimeout(mutes, 1000 * 60)
   }
   async function bans() {
+    const conditional = {
+      Expires: { $lt: new Date() },
+      Current: true,
+    }
     const results = await banSchema.find(conditional);
 
     if (results && results.length) {
